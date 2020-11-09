@@ -6,19 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-{% extends "base.html" %}
-{% load static %}
-{% load pagination_tags %}
+<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 
-{% block title %}大学公共课程共享资源管理平台{% endblock %}
 
-{% block css %}
-<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link href="{% static 'css/pagination.css' %}" rel="stylesheet"/>
-{% endblock %}
+<rapid:override name="title">大学公共课程共享资源管理平台</rapid:override>
 
-{% block content %}
+<rapid:override name="css">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="css/pagination.css" rel="stylesheet"/>
+</rapid:override>
+
+<rapid:override name="content">
 <div class="container">
     <div class="header" id="head"  >
         <div class="title" style="text-align: center;"><h1>个人信息</h1></div>
@@ -48,6 +47,4 @@
         </div>
     </div>
 </div>
-
-
-{% endblock %}
+</rapid:override>
