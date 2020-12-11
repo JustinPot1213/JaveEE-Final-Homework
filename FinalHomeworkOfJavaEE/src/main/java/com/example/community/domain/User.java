@@ -4,6 +4,7 @@ import java.util.List;
 
 public class User {
 
+    public int id;
     public String name;
     private String password;
     public List<Blog> blogs;
@@ -12,6 +13,14 @@ public class User {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+    }
+
+    public User(int id, String name, String password, List<Blog> blogs, List<Comment> comments) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.blogs = blogs;
+        this.comments = comments;
     }
 
 
@@ -45,5 +54,13 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

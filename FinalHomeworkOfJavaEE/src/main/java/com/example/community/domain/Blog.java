@@ -1,22 +1,27 @@
 package com.example.community.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Blog {
 
+    public int id;
     public String header;
     public String text;
     public User user;
     public Date date;
     public String time;
+    public List<Comment> comments;
 
 
-    public Blog(String header, String text, User user) {
+    public Blog(int id, String header, String text, User user, Date date, String time, List<Comment> comments) {
+        this.id = id;
         this.header = header;
         this.text = text;
         this.user = user;
-        this.date = new Date();
-        this.time = date.toString();
+        this.date = date;
+        this.time = time;
+        this.comments = comments;
     }
 
 
@@ -58,5 +63,21 @@ public class Blog {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

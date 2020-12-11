@@ -20,7 +20,7 @@
         <rapid:block name="title"></rapid:block>
     </title>
     <rapid:block name="descriptions"></rapid:block>
-    <link href="css/navigation.css" rel="stylesheet">
+    <link href="../css/navigation.css" rel="stylesheet">
     <rapid:block name="css"></rapid:block>
     <script language="javascript" type="text/javascript">
         <rapid:block name="js"></rapid:block>
@@ -33,7 +33,7 @@
     <div class='card-wrapper'>
         <a href='/index/'>
             <div class='card bg-01'>
-                <span class='card-content'>主页</span>
+                <span class='card-content'>博客主页</span>
             </div>
         </a>
     </div>
@@ -81,7 +81,7 @@
     <div class='card-wrapper'>
         <a href='/about_us/'>
             <div class='card bg-07'>
-                <span class='card-content'>关于我们</span>
+                <span class='card-content'>关于作者</span>
             </div>
         </a>
     </div>

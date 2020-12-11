@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.community.dao.CommentMapper">
+
+    <resultMap id="CommentResultMap" type="com.example.community.domain.Comment">
+        <result column="CommentId" jdbcType="INT" property="id" />
+        <result column="Text" jdbcType="LONGTEXT" property="text" />
+        <result column="Date" jdbcType="timestamp" javaType="Date" property="date"/>
+        <result column="Date" jdbcType="timestamp" javaType="String" property="time"/>
+        <association property="user" javaType="com.example.community.domain.User"
+                     select="com.example.community.dao.UserMapper.getById" column="UserId"/>
+        <association property="toComment" javaType="com.example.community.domain.Comment"
+                     select="getById" column="ToCommentId"/>
+        <association property="blog" javaType="com.example.community.domain.Blog"
+                     select="com.example.community.dao.BlogMapper.getById" column="BlogId"/>
+    </resultMap>
+
+    <select id="getById" resultMap="CommentResultMap">
+        select * from comments where CommentId = #{id}
+    </select>
+
+    <select id="getByUserName" resultMap="CommentResultMap">
+        select * from comments where CommentId in(
+            select user_comment.CommentId from user_comment where user_comment.UserId in(
+                select users.UserId from users where Name = #{name}
+                )
+            )
+    </select>
+
+    <select id="getByUserId" resultMap="CommentResultMap">
+        select * from comments where CommentId in(
+            select user_comment.CommentId from user_comment where user_comment.UserId  = #{userId}
+            )
+    </select>
+
+    <select id="getByBlogId" resultMap="CommentResultMap">
+        select * from comments where BlogId = #{blogId}
+    </select>
+
+    <insert id="insertComment" parameterType="com.example.community.domain.Comment" useGeneratedKeys="true" keyProperty="CommentId">
+        insert into comments(UserId, Text, BlogId, ToCommentId, Date)
+        values(#{user.id}, #{text}, #{blog.id}, #{toComment.id} #{date})
+    </insert>
+
+    <insert id="insertCommentIntoUC" parameterType="com.example.community.domain.Comment">
+        insert into user_comment(UserId, CommentId) values(#{user.id}, #{id})
+    </insert>
+
+    <insert id="insertCommentIntoBC" parameterType="com.example.community.domain.Comment">
+        insert into blog_comment(BlogId, CommentId) values(#{blog.id}, #{id})
+    </insert>
+
+</mapper>

@@ -1,0 +1,130 @@
+#container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 600px;
+    background-color: #fafafa;
+    padding: 0px;
+    box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.07);
+    margin: 6rem 0;
+    border-radius: 0.75rem;
+}
+#tasks {
+    padding: 1.5rem 2rem;
+}
+#tasks #tasksList {
+    list-style-type: none;
+    padding-left: 0;
+}
+#tasks #tasksList li {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.07);
+    border-radius: 0.75rem;
+    color: #0d0d0d;
+    padding: 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .03rem;
+    -webkit-animation: fadeIn .5s linear;
+    animation: fadeIn .5s linear;
+    background-color: #fff;
+    margin-bottom: 5px;
+    position: relative;
+    border-right: 0px solid lightgray;
+    letter-spacing: -.015rem;
+    will-change: transform;
+}
+#tasks #tasksList li:hover {
+    /*border-right: 55px solid red;*/
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    z-index: 20;
+    box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.2);
+}
+#tasks #tasksList li:hover .delete {
+    right: -37px;
+    color: white;
+}
+#tasks #tasksList li .delete {
+    -webkit-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
+    position: absolute;
+    color: transparent;
+    background: none;
+    border: none;
+    outline: 0;
+    line-height: .85rem;
+    font-size: 1rem;
+}
+#tasks #tasksList li .delete:hover {
+    opacity: .75;
+}
+#tasks #notification {
+    padding-top: 1rem;
+    text-align: center;
+    color: gray;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-top: -50px;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-top: -50px;
+    }
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.community.dao.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.example.community.domain.User">
+        <result column="UserId" jdbcType="INT" property="id" />
+        <result column="Name" jdbcType="VARCHAR" property="name" />
+        <result column="Password" jdbcType="VARCHAR" property="password" />
+        <collection property="comments" ofType="com.example.community.domain.Comment"
+                    select="com.example.community.dao.CommentMapper.getByUserId" column="UserId"/>
+        <collection property="blogs" ofType="com.example.community.domain.Blog"
+                    select="com.example.community.dao.BlogMapper.getByUserId" column="UserId"/>
+    </resultMap>
+
+    <select id="getByName" resultMap="UserResultMap">
+        select * from users where Name = #{name}
+    </select>
+
+    <select id="getById" resultMap="UserResultMap">
+        select * from users where UserId = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="com.example.community.domain.User" useGeneratedKeys="true" keyProperty="UserId">
+        insert into users(Name,Password) values(#{name}, #{password})
+    </insert>
+
+    <update id="updatePassword">
+        update users set Password = #{newPassword} where Name = #{name}
+    </update>
+
+
+
+</mapper>

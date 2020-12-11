@@ -4,19 +4,31 @@ import java.util.Date;
 
 public class Comment {
 
+    public int id;
     public String text;
     public User user;
     public Date date;
     public String time;
-    public Comment comment;
+    public Comment toComment;
+    public Blog blog;
 
-
-    public Comment(String text, User user, Comment comment) {
+    public Comment(int id, String text, User user, Comment comment) {
+        this.id = id;
         this.text = text;
         this.user = user;
-        this.comment = comment;
+        this.toComment = comment;
         this.date = new Date();
         this.time = date.toString();
+    }
+
+    public Comment(int id, String text, User user, Date date, String time, Comment toComment, Blog blog) {
+        this.id = id;
+        this.text = text;
+        this.user = user;
+        this.date = date;
+        this.time = time;
+        this.toComment = toComment;
+        this.blog = blog;
     }
 
     public String getText() {
@@ -51,11 +63,27 @@ public class Comment {
         this.time = time;
     }
 
-    public Comment getComment() {
-        return comment;
+    public Comment getToComment() {
+        return toComment;
     }
 
-    public void setComment(Comment comment) {
-        this.comment = comment;
+    public void setToComment(Comment toComment) {
+        this.toComment = toComment;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }
