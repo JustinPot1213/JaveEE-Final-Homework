@@ -24,6 +24,15 @@ public class Blog {
         this.comments = comments;
     }
 
+    public Blog(String header, String text, User user, List<Comment> comments) {
+        this.header = header;
+        this.text = text;
+        this.user = user;
+        this.comments = comments;
+        this.date = new Date();
+        this.time = date.toString();
+    }
+
 
     public String getHeader() {
         return header;

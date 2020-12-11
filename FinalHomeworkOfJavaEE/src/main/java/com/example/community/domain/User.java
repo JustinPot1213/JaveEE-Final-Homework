@@ -13,6 +13,8 @@ public class User {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+        blogs = null;
+        comments = null;
     }
 
     public User(int id, String name, String password, List<Blog> blogs, List<Comment> comments) {

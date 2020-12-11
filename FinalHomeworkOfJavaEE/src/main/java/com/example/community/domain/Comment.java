@@ -31,6 +31,15 @@ public class Comment {
         this.blog = blog;
     }
 
+    public Comment(String text, User user, Comment toComment, Blog blog) {
+        this.text = text;
+        this.user = user;
+        this.toComment = toComment;
+        this.blog = blog;
+        this.date = new Date();
+        this.time = date.toString();
+    }
+
     public String getText() {
         return text;
     }
