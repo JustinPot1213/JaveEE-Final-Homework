@@ -3,10 +3,10 @@
 <mapper namespace="com.example.community.dao.CommentMapper">
 
     <resultMap id="CommentResultMap" type="com.example.community.domain.Comment">
-        <result column="CommentId" jdbcType="INT" property="id" />
-        <result column="Text" jdbcType="LONGTEXT" property="text" />
-        <result column="Date" jdbcType="timestamp" javaType="Date" property="date"/>
-        <result column="Date" jdbcType="timestamp" javaType="String" property="time"/>
+        <result column="CommentId" jdbcType="INTEGER" property="id" />
+        <result column="Text" jdbcType="VARCHAR" property="text" />
+        <result column="Date" jdbcType="TIMESTAMP" javaType="Date" property="date"/>
+        <result column="Date" jdbcType="TIMESTAMP" javaType="String" property="time"/>
         <association property="user" javaType="com.example.community.domain.User"
                      select="com.example.community.dao.UserMapper.getById" column="UserId"/>
         <association property="toComment" javaType="com.example.community.domain.Comment"
@@ -37,7 +37,7 @@
         select * from comments where BlogId = #{blogId}
     </select>
 
-    <insert id="insertComment" parameterType="com.example.community.domain.Comment" useGeneratedKeys="true" keyProperty="CommentId">
+    <insert id="insertComment" parameterType="com.example.community.domain.Comment" useGeneratedKeys="true" keyColumn="CommentId">
         insert into comments(UserId, Text, BlogId, ToCommentId, Date)
         values(#{user.id}, #{text}, #{blog.id}, #{toComment.id} #{date})
     </insert>

@@ -19,13 +19,13 @@ public class CommentService {
     @Autowired
     BlogMapper blogMapper;
 
-    void insert(Comment comment){
+    private void insert(Comment comment){
         commentMapper.insertComment(comment);
         commentMapper.insertCommentIntoBC(comment);
         commentMapper.insertCommentIntoUC(comment);
     };
 
-    void makeComment(String userName, int blogId, String text){
+    public void makeComment(String userName, int blogId, String text){
         User user = userMapper.getByName(userName);
         Blog blog = blogMapper.getById(blogId);
         Comment newComment = new Comment(text, user, null, blog);
@@ -33,7 +33,7 @@ public class CommentService {
 
     };
 
-    void replyComment(String userName, int blogId, int toCommentId, String text){
+    public void replyComment(String userName, int blogId, int toCommentId, String text){
         User user = userMapper.getByName(userName);
         Blog blog = blogMapper.getById(blogId);
         Comment toComment = commentMapper.getById(toCommentId);

@@ -3,7 +3,7 @@
 <mapper namespace="com.example.community.dao.UserMapper">
 
     <resultMap id="UserResultMap" type="com.example.community.domain.User">
-        <result column="UserId" jdbcType="INT" property="id" />
+        <result column="UserId" jdbcType="INTEGER" property="id" />
         <result column="Name" jdbcType="VARCHAR" property="name" />
         <result column="Password" jdbcType="VARCHAR" property="password" />
         <collection property="comments" ofType="com.example.community.domain.Comment"
@@ -20,7 +20,7 @@
         select * from users where UserId = #{id}
     </select>
 
-    <insert id="addUser" parameterType="com.example.community.domain.User" useGeneratedKeys="true" keyProperty="UserId">
+    <insert id="addUser" parameterType="com.example.community.domain.User" useGeneratedKeys="true" keyColumn="UserId">
         insert into users(Name,Password) values(#{name}, #{password})
     </insert>
 

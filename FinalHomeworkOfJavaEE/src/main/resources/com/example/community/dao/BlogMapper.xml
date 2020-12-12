@@ -3,11 +3,11 @@
 <mapper namespace="com.example.community.dao.BlogMapper">
 
     <resultMap id="BlogResultMap" type="com.example.community.domain.Blog">
-        <result column="BlogId" jdbcType="INT" property="id" />
-        <result column="Header" jdbcType="LONGTEXT" property="header" />
-        <result column="Text" jdbcType="LONGTEXT" property="text" />
-        <result column="Date" jdbcType="timestamp" javaType="Date" property="date"/>
-        <result column="Date" jdbcType="timestamp" javaType="String" property="time"/>
+        <result column="BlogId" jdbcType="INTEGER" property="id" />
+        <result column="Header" jdbcType="VARCHAR" property="header" />
+        <result column="Text" jdbcType="VARCHAR" property="text" />
+        <result column="Date" jdbcType="TIMESTAMP" javaType="Date" property="date"/>
+        <result column="Date" jdbcType="TIMESTAMP" javaType="String" property="time"/>
         <association property="user" javaType="com.example.community.domain.User"
                      select="com.example.community.dao.UserMapper.getById" column="UserId"/>
         <collection property="comments" ofType="com.example.community.domain.Comment"
@@ -28,7 +28,7 @@
         select * from blogs where BlogId = #{id}
     </select>
 
-    <insert id="addBlog" parameterType="com.example.community.domain.Blog" useGeneratedKeys="true" keyProperty="CommentId">
+    <insert id="addBlog" parameterType="com.example.community.domain.Blog" useGeneratedKeys="true" keyColumn="CommentId">
         insert into blogs(BlogId, Header, Text, UserId, Date)
         values(#{id}, #{header}, #{text}, #{user.id}, #{date})
     </insert>

@@ -12,8 +12,10 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    String register(String name, String password1, String password2){
-        if (userMapper.getByName(name) != null) return "用户名已存在";
+    public String register(String name, String password1, String password2){
+        if (name.equals("")) return "请输入用户名";
+        else if (password1.equals("")) return "请输入密码";
+        else if (userMapper.getByName(name) != null) return "用户名已存在";
         else if (password1.equals(password2)) {
             String password = DigestUtils.md5DigestAsHex(password1.getBytes());
             User newUser = new User(name, password);
@@ -23,7 +25,9 @@ public class UserService {
         else return"两次输入密码不一致";
     };
 
-    String login(String name, String password){
+    public String login(String name, String password){
+        if (name.equals("")) return "请输入用户名";
+        else if (password.equals("")) return "请输入密码";
         User user = userMapper.getByName(name);
         if (user == null) return "不存在该用户";
         else if (DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword()))

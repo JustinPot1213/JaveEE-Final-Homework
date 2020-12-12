@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class BlogService {
 
     @Autowired
-    BlogMapper blogMapper;
+    private BlogMapper blogMapper;
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
-    void writeBlog(String userName, String header, String text){
+    public void writeBlog(String userName, String header, String text){
         User user = userMapper.getByName(userName);
         Blog newBlog = new Blog(header, text, user, null);
         blogMapper.addBlog(newBlog);

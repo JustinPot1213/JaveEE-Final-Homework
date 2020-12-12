@@ -2,6 +2,7 @@ package com.example.community.dao;
 
 import com.example.community.domain.Comment;
 import com.example.community.domain.User;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

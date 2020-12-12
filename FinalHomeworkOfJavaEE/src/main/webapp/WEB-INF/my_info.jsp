@@ -8,23 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 
-
 <rapid:override name="title">个人信息</rapid:override>
 
 <rapid:override name="css">
     <link href="../css/my_info.css" rel="stylesheet"/>
-    <link href="../css/pagination.css" rel="stylesheet"/>
 </rapid:override>
 
 <rapid:override name="content">
-    <div class="timeline-small" style="font-size: larger">
+    <div class="timeline-small" style="font-size: medium">
         <div class="header">
             <div class="color-overlay">
                 <div class="header-name">个人信息</div>
                 <div class="header-sub">个人信息展示以及个人信息修改</div>
             </div>
         </div>
-        <div class="timeline-small-body" style="font-size: larger">
+        <div class="timeline-small-body" style="font-size: medium">
             <ul>
                 <li>
                     <div class="bullet pink"></div>
@@ -35,27 +33,27 @@
                     </div>
                 </li>
                 <li>
-                    <div class="bullet orange"></div>
-                    <div class="date" style="font-size: 16px">用户昵称:</div>
-                    <div class="desc">
-                        <h3>{{User.UserName}}</h3>
-                        <h4><a href="/editusername/"><ins>修改昵称</ins></a></h4>
-                    </div>
-                </li>
-                <li>
-                    <div class="bullet blue"></div>
-                    <div class="date" style="font-size: 16px">邮箱:</div>
-                    <div class="desc">
-                        <h3>{{User.Email}}</h3>
-                        <h4>绑定邮箱不可改</h4>
-                    </div>
-                </li>
-                <li>
                     <div class="bullet green"></div>
                     <div class="date" style="font-size: 16px">修改密码:</div>
                     <div class="desc">
                         <h3>密码不可明文展示</h3>
                         <h4><a href="/editpassword/"><ins>修改密码</ins></a></h4>
+                    </div>
+                </li>
+                <li>
+                    <div class="bullet blue"></div>
+                    <div class="date" style="font-size: 16px">发博数:</div>
+                    <div class="desc">
+                        <h3>{{User.Email}}</h3>
+                        <h4><a href="/blog_list/"><ins>查看自己的博客列表</ins></a></h4>
+                    </div>
+                </li>
+                <li>
+                    <div class="bullet green"></div>
+                    <div class="date" style="font-size: 16px">评论数:</div>
+                    <div class="desc">
+                        <h3>密码不可明文展示</h3>
+                        <h4><a href="/comment_list/"><ins>查看自己的评论列表</ins></a></h4>
                     </div>
                 </li>
             </ul>

@@ -1,6 +1,7 @@
 package com.example.community.dao;
 
 import com.example.community.domain.Comment;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

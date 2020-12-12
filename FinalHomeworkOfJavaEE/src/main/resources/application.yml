@@ -16,7 +16,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:com/example/community/dao/*Mapper.xml
-  type-aliases-package: com.example.demo.domain
+  type-aliases-package: com.example.community.domain
 
 #showSql
 logging:

@@ -22,13 +22,14 @@
     <rapid:block name="descriptions"></rapid:block>
     <link href="../css/navigation.css" rel="stylesheet">
     <rapid:block name="css"></rapid:block>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript">
         <rapid:block name="js"></rapid:block>
     </script>
 
 </head>
 
 <body>
+
 <div class='card-holder'>
     <div class='card-wrapper'>
         <a href='/index/'>
@@ -71,9 +72,9 @@
     </div>
 
     <div class='card-wrapper'>
-        <a href='/star/'>
+        <a href='//'>my_blogs
             <div class='card bg-06'>
-                <span class='card-content'>我的收藏</span>
+                <span class='card-content'>我的博客</span>
             </div>
         </a>
     </div>
