@@ -40,6 +40,9 @@ public class Comment {
         this.time = date.toString();
     }
 
+    public Comment() {
+    }
+
     public String getText() {
         return text;
     }

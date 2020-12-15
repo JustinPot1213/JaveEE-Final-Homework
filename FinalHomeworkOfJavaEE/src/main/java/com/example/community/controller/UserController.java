@@ -1,23 +1,34 @@
 package com.example.community.controller;
 
+import com.example.community.domain.User;
 import com.example.community.service.UserService;
+import org.apache.cxf.transport.http.HTTPSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@SessionAttributes(value = "loginUser", types = {User.class})
 public class UserController {
 
     @Autowired
     UserService userService;
 
     @RequestMapping("/my_information")
-    public String ShowMyInfo(){
-        return "my_info";
+    public ModelAndView ShowMyInfo(@ModelAttribute("loginUser")User loginUser){
+        ModelAndView mv = new ModelAndView();
+        if (loginUser != null){
+            mv.addObject("userName",loginUser.name);
+            mv.addObject("blogsCount",userService.getBlogsCount(loginUser));
+            mv.addObject("commentsCount",userService.getCommentsCount(loginUser));
+            mv.setViewName("my_info");
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
     }
 
     @RequestMapping("/login")
@@ -33,11 +44,14 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded;charset=UTF-8")
     public ModelAndView checkLogin(@RequestParam(value="userName") String userName,
                                    @RequestParam(value="password") String password,
-                                   RedirectAttributes redirectAttributes){
+                                   RedirectAttributes redirectAttributes,
+                                   Model model){
         String message = userService.login(userName, password);
         ModelAndView mv = new ModelAndView();
         if (message.equals("登陆成功")) {
             redirectAttributes.addFlashAttribute("message", message);
+            User user = userService.getByName(userName);
+            model.addAttribute("loginUser",user);
             mv.setViewName("redirect:/index");
         }
         else {
@@ -63,6 +77,11 @@ public class UserController {
             mv.addObject("message", message);
         }
         return mv;
+    };
+
+    @ModelAttribute("loginUser")
+    public User getUser() {
+        return null;
     };
 
 }

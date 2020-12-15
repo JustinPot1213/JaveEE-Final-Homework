@@ -1,16 +1,27 @@
 package com.example.community.service;
 
+import com.example.community.dao.BlogMapper;
+import com.example.community.dao.CommentMapper;
 import com.example.community.dao.UserMapper;
+import com.example.community.domain.Comment;
 import com.example.community.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import javax.print.CancelablePrintJob;
 
 @Service
 public class UserService {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    BlogMapper blogMapper;
+
+    @Autowired
+    CommentMapper commentMapper;
 
     public String register(String name, String password1, String password2){
         if (name.equals("")) return "请输入用户名";
@@ -34,5 +45,17 @@ public class UserService {
             return "登陆成功";
         else return "密码错误";
     };
+
+    public User getByName(String name){
+        return userMapper.getByName(name);
+    };
+
+    public int getBlogsCount(User user){
+        return blogMapper.getByUserId(user.id).size();
+    }
+
+    public int getCommentsCount(User user){
+        return commentMapper.getByUserId(user.id).size();
+    }
 
 }

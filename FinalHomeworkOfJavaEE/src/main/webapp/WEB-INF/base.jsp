@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -72,7 +72,7 @@
     </div>
 
     <div class='card-wrapper'>
-        <a href='//'>my_blogs
+        <a href='/my_blogs/'>
             <div class='card bg-06'>
                 <span class='card-content'>我的博客</span>
             </div>

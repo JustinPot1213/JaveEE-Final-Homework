@@ -33,6 +33,9 @@ public class User {
         comments = null;
     }
 
+    public User() {
+    }
+
 
     public String getName() {
         return name;

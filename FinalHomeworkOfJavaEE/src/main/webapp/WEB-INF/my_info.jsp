@@ -28,7 +28,7 @@
                     <div class="bullet pink"></div>
                     <div class="date" style="font-size: 16px">用户名：</div>
                     <div class="desc">
-                        <h3>{{User.UserID}}</h3>
+                        <h3>${userName}</h3>
                         <h4>用户名不可改</h4>
                     </div>
                 </li>
@@ -44,7 +44,7 @@
                     <div class="bullet blue"></div>
                     <div class="date" style="font-size: 16px">发博数:</div>
                     <div class="desc">
-                        <h3>{{User.Email}}</h3>
+                        <h3>${blogsCount}</h3>
                         <h4><a href="/blog_list/"><ins>查看自己的博客列表</ins></a></h4>
                     </div>
                 </li>
@@ -52,7 +52,7 @@
                     <div class="bullet green"></div>
                     <div class="date" style="font-size: 16px">评论数:</div>
                     <div class="desc">
-                        <h3>密码不可明文展示</h3>
+                        <h3>${commentsCount}</h3>
                         <h4><a href="/comment_list/"><ins>查看自己的评论列表</ins></a></h4>
                     </div>
                 </li>

@@ -33,6 +33,16 @@ public class Blog {
         this.time = date.toString();
     }
 
+    public Blog(int id, String header, String text, User user, String time) {
+        this.id = id;
+        this.header = header;
+        this.text = text;
+        this.user = user;
+        this.time = time;
+    }
+
+    public Blog() {
+    }
 
     public String getHeader() {
         return header;
@@ -89,4 +99,5 @@ public class Blog {
     public void setId(int id) {
         this.id = id;
     }
+
 }

@@ -186,9 +186,9 @@
             right: 0;
         }
         .bar7 button:before{
-          content: "\f002";
-          font-family: FontAwesome;
-          color: #324b4e;
+            content: "\f002";
+            font-family: FontAwesome, serif;
+            color: #324b4e;
         }
 
         /*搜索框8*/

@@ -16,7 +16,14 @@ spring:
 
 mybatis:
   mapper-locations: classpath:com/example/community/dao/*Mapper.xml
-  type-aliases-package: com.example.community.domain
+  type-aliases-package: com.example.community.domaincation
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
 
 #showSql
 logging:

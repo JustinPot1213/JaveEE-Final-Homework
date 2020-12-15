@@ -28,9 +28,30 @@
         select * from blogs where BlogId = #{id}
     </select>
 
+    <select id="getFavorites" resultMap="BlogResultMap">
+        select * from favorites where UserId = #{userId}
+    </select>
+
+    <select id="getAll" resultMap="BlogResultMap">
+        select * from blogs
+    </select>
+
+    <select id="query" resultMap="BlogResultMap">
+        select BlogId, Header, Text, blogs.UserId, Date from blogs, users where users.UserId = blogs.UserId and
+                                         Header like '%${name}%' and Text like '%${text}%' and users.Name like '%${author}%'
+    </select>
     <insert id="addBlog" parameterType="com.example.community.domain.Blog" useGeneratedKeys="true" keyColumn="CommentId">
         insert into blogs(BlogId, Header, Text, UserId, Date)
         values(#{id}, #{header}, #{text}, #{user.id}, #{date})
     </insert>
+
+    <insert id="addStar">
+        insert into favorites(UserId, BlogId)
+        values(#{userId}, #{blogId})
+    </insert>
+
+    <delete id="removeStar">
+        delete from favorites where UserId = #{userId} and BlogId = #{blogId}
+    </delete>
 
 </mapper>
