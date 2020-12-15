@@ -8,15 +8,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+import java.net.http.HttpRequest;
+
 @Controller
-@SessionAttributes(value = "loginUser", types = {User.class})
+@SessionAttributes(value = {"loginUser","name", "author", "text", "detail"},
+        types = {User.class, String.class, String.class, String.class, String.class})
 public class UserController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping("/logout")
+    public String logout(SessionStatus sessionStatus){
+        sessionStatus.setComplete();
+        return "redirect:/login";
+    }
 
     @RequestMapping("/my_information")
     public ModelAndView ShowMyInfo(@ModelAttribute("loginUser")User loginUser){
@@ -49,7 +60,7 @@ public class UserController {
         String message = userService.login(userName, password);
         ModelAndView mv = new ModelAndView();
         if (message.equals("登陆成功")) {
-            redirectAttributes.addFlashAttribute("message", message);
+            redirectAttributes.addFlashAttribute("successMessage", "登陆成功");
             User user = userService.getByName(userName);
             model.addAttribute("loginUser",user);
             mv.setViewName("redirect:/index");

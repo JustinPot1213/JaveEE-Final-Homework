@@ -21,8 +21,8 @@ public class CommentService {
 
     private void insert(Comment comment){
         commentMapper.insertComment(comment);
-        commentMapper.insertCommentIntoBC(comment);
-        commentMapper.insertCommentIntoUC(comment);
+//        commentMapper.insertCommentIntoBC(comment);
+//        commentMapper.insertCommentIntoUC(comment);
     };
 
     public void makeComment(String userName, int blogId, String text){

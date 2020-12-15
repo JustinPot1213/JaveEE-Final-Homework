@@ -39,7 +39,7 @@
 
     <insert id="insertComment" parameterType="com.example.community.domain.Comment" useGeneratedKeys="true" keyColumn="CommentId">
         insert into comments(UserId, Text, BlogId, ToCommentId, Date)
-        values(#{user.id}, #{text}, #{blog.id}, #{toComment.id} #{date})
+        values(#{user.id}, #{text}, #{blog.id}, #{toComment.id}, #{date})
     </insert>
 
     <insert id="insertCommentIntoUC" parameterType="com.example.community.domain.Comment">

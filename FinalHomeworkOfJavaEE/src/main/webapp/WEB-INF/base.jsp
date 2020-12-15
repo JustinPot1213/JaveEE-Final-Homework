@@ -22,9 +22,8 @@
     <rapid:block name="descriptions"></rapid:block>
     <link href="../css/navigation.css" rel="stylesheet">
     <rapid:block name="css"></rapid:block>
-    <script type="text/javascript">
-        <rapid:block name="js"></rapid:block>
-    </script>
+
+    <rapid:block name="js"></rapid:block>
 
 </head>
 

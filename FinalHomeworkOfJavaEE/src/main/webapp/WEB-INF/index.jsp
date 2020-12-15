@@ -22,9 +22,11 @@
 </rapid:override>
 
 <rapid:override name="js">
-    var message2 = "${sessionScope['org.springframework.web.servlet.support.SessionFlashMapManager.FLASH_MAPS'][0]['message']}";
-    if (message2 != "") alert(message2);
-    window.history.replaceState(null, null, window.location.href);
+    <script type="text/javascript">
+        var successMessage =  ${sessionScope['org.springframework.web.servlet.support.SessionFlashMapManager.FLASH_MAPS'][0]['successMessage']};
+        if (successMessage != "") alert(successMessage);
+        window.history.replaceState(null, null, window.location.href);
+    </script>
     <script type="text/javascript" src="../js/bootstrap-paginator.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript" src="../js/npm.js"></script>
@@ -319,7 +321,7 @@
 
         <p style="text-align: center">
             <button style="border: #0d8aee; border-radius: 5px;">
-                <a href="/logout/" >登出</a>
+                <a href="/logout/">登出</a>
             </button>
         </p>
 

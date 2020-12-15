@@ -27,7 +27,7 @@
 
 <body onload="showMessage()">
 
-<div class="container" style="width: 400px;height: 300px; border-radius: 15px">
+<div class="container" style="width: 400px;height: 360px; border-radius: 15px">
     <div class="form form--login" style="width:400px">
         <div class="form--heading">用户登录</div>
         <form class="form-edit" method="post">
@@ -40,6 +40,11 @@
             </div>
             </P>
             <p><input type="submit" class="button" value="登录" style="border-radius: 9px;"></p>
+            <p>
+                <a  href="/register/">
+                    <input type="button" class="button" value="注册" style="border-radius: 9px;">
+                </a>
+            </p>
         </form>
     </div>
 </div>

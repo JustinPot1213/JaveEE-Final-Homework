@@ -1,8 +1,10 @@
 package com.example.community.service;
 
 import com.example.community.dao.BlogMapper;
+import com.example.community.dao.CommentMapper;
 import com.example.community.dao.UserMapper;
 import com.example.community.domain.Blog;
+import com.example.community.domain.Comment;
 import com.example.community.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ public class BlogService {
     private BlogMapper blogMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private CommentMapper commentMapper;
 
     public void writeBlog(String userName, String header, String text){
         User user = userMapper.getByName(userName);
@@ -35,6 +39,14 @@ public class BlogService {
 
     public List<Blog> queryByConditions(String name, String author, String text){
         return blogMapper.query(name, author, text);
+    };
+
+    public Blog getById(int blogId){
+        return blogMapper.getById(blogId);
+    };
+
+    public List<Comment> getItsCommentsById(int blogId){
+        return commentMapper.getByBlogId(blogId);
     };
 
 }
