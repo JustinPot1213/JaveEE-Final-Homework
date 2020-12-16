@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
 
     User getByName(String name);
+//    String getPasswordByName(String name);
     User getById(int id);
 
     int addUser(User user); //返回插入记录条数

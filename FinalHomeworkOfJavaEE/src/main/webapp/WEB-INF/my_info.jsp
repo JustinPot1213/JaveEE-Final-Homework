@@ -15,6 +15,7 @@
 </rapid:override>
 
 <rapid:override name="content">
+
     <div class="timeline-small" style="font-size: medium">
         <div class="header">
             <div class="color-overlay">

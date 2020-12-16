@@ -79,7 +79,7 @@
     </div>
 
     <div class='card-wrapper'>
-        <a href='/about_us/'>
+        <a href='/about_me/'>
             <div class='card bg-07'>
                 <span class='card-content'>关于作者</span>
             </div>

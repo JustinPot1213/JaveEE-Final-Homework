@@ -90,9 +90,46 @@ public class UserController {
         return mv;
     };
 
+    @RequestMapping(value = "edit_password" , method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded;charset=UTF-8")
+    public ModelAndView changePassword(
+            @RequestParam(value="oldPassword") String oldPassword,
+            @RequestParam(value="password1") String password1,
+            @RequestParam(value="password2") String password2,
+            RedirectAttributes redirectAttributes,
+            @ModelAttribute("loginUser")User loginUser){
+
+        ModelAndView mv = new ModelAndView();
+
+        if (loginUser != null) {
+            String message = userService.changePassword(oldPassword,password1,password2, loginUser.name);
+            if (message.equals("修改成功")) {
+                redirectAttributes.addFlashAttribute("message", message);
+                mv.setViewName("redirect:/my_information");
+            }
+            else {
+                mv.setViewName("edit_password");
+                mv.addObject("message", message);
+            }
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
+
+    }
+
+    @RequestMapping("/edit_password")
+    public String ShowChangePassword(@ModelAttribute("loginUser")User loginUser){
+        if (loginUser != null){
+            return "edit_password";
+        }
+        else return "redirect:/login";
+    }
+
     @ModelAttribute("loginUser")
     public User getUser() {
         return null;
     };
+
+    @RequestMapping("/about_me")
+    public String showProgrammer(){ return "about_me"; }
 
 }

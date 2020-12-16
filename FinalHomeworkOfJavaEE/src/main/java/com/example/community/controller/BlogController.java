@@ -94,10 +94,10 @@ public class BlogController {
         return mv;
     };
 
-    @RequestMapping("/write_blog")
-    public String ShowWriteBlog(){
-        return "write_blog";
-    };
+//    @RequestMapping("/write_blog")
+//    public String ShowWriteBlog(){
+//        return "write_blog";
+//    };
 
     @ModelAttribute("name")
     public String getName() {
@@ -177,5 +177,29 @@ public class BlogController {
 
     };
 
+    @RequestMapping(value = "write_blog", method = RequestMethod.GET)
+    public ModelAndView showWriteBlog(@ModelAttribute("loginUser") User loginUser){
 
+        ModelAndView mv = new ModelAndView();
+
+        if (loginUser != null){
+            mv.setViewName("write_blog");
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
+    }
+
+    @RequestMapping(value = "write_blog", method = RequestMethod.POST)
+    public ModelAndView addBlog(
+            @ModelAttribute("loginUser") User loginUser,
+            @RequestParam(value = "text") String text,
+            @RequestParam(value = "header") String header){
+        ModelAndView mv = new ModelAndView();
+        if (loginUser != null){
+            blogService.writeBlog(loginUser.name,header,text);
+            mv.setViewName("redirect:/index");
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
+    }
 }

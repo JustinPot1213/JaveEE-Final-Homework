@@ -58,3 +58,17 @@ p {
 .comment-actions li.reply {
     padding-left: 0.625rem;
 }
+
+.button_01 a {
+    display: block;
+    width: 90px;
+    height: 24px;
+    padding: 6px 0 0 30px;
+    /*background: url(../images/templatemo_button_01.jpg) no-repeat;*/
+
+    color: #191717;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}

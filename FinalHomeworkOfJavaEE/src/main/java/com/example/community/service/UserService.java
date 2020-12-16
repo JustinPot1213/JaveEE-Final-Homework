@@ -46,6 +46,19 @@ public class UserService {
         else return "密码错误";
     };
 
+    public String changePassword(String oldPassword, String password1, String password2, String name){
+        if (oldPassword.equals("")) return "请输入旧密码";
+        else if (password1.equals("")) return "请输入新密码";
+        else if (!(userMapper.getByName(name).getPassword().equals(DigestUtils.md5DigestAsHex(oldPassword.getBytes()))))
+            return "旧密码不正确";
+        else if (password1.equals(password2)) {
+            String password = DigestUtils.md5DigestAsHex(password1.getBytes());
+            userMapper.updatePassword(name, password);
+            return "修改成功";
+        }
+        else return"两次输入密码不一致";
+    };
+
     public User getByName(String name){
         return userMapper.getByName(name);
     };

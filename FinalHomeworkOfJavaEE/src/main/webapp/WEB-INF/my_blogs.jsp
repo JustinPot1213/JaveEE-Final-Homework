@@ -125,7 +125,7 @@
     <div class="header" id="head" >
         <div class="title" style="text-align: center;"><h1>我的博客</h1></div>
     </div>
-
+    <br>
     <div id="container" style="height: auto">
 
 
@@ -319,11 +319,7 @@
             </div>
         </div>
 
-<%--        <p style="text-align: center">--%>
-<%--            <button style="border: #0d8aee; border-radius: 5px;">--%>
-<%--                <a href="/logout/">登出</a>--%>
-<%--            </button>--%>
-<%--        </p>--%>
+
 
     </div>
 
