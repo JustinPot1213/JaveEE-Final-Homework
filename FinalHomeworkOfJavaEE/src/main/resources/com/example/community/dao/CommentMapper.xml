@@ -20,16 +20,18 @@
     </select>
 
     <select id="getByUserName" resultMap="CommentResultMap">
-        select * from comments where CommentId in(
-            select user_comment.CommentId from user_comment where user_comment.UserId in(
-                select users.UserId from users where Name = #{name}
-                )
+        select * from comments where UserId in(
+            select users.UserId from users where Name = #{name}
             )
     </select>
 
     <select id="getByUserId" resultMap="CommentResultMap">
-        select * from comments where CommentId in(
-            select user_comment.CommentId from user_comment where user_comment.UserId  = #{userId}
+        select * from comments where UserId = #{userId}
+    </select>
+
+    <select id="getMessagesByUserId" resultMap="CommentResultMap">
+        select * from comments where ToCommentId in (
+            select CommentId from comments where UserId = #{userId}
             )
     </select>
 

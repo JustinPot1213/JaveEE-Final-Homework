@@ -54,7 +54,50 @@ public class CommentController {
         else mv.setViewName("redirect:/login");
         return mv;
 
-    }
+    };
+
+    @RequestMapping("my_comments")
+    public ModelAndView showMyComments(
+            @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
+            @ModelAttribute("loginUser") User loginUser){
+
+        ModelAndView mv = new ModelAndView();
+
+        if (loginUser != null) {
+
+            PageHelper.startPage(pageNo, 4);
+            List<Comment> myComments = commentService.getMyComments(loginUser);
+            PageInfo<Comment> pageInfo = new PageInfo<>(myComments, 2);
+
+            List<Comment> thisPageComments = pageInfo.getList();
+            mv.addObject("pageInfo", pageInfo);
+            mv.addObject("thisPageComments", thisPageComments);
+            mv.setViewName("my_comments");
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
+    };
+
+    @RequestMapping("messages")
+    public ModelAndView showMessages(
+            @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
+            @ModelAttribute("loginUser") User loginUser){
+        ModelAndView mv = new ModelAndView();
+
+        if (loginUser != null) {
+            PageHelper.startPage(pageNo, 2);
+            List<Comment> myMessages = commentService.getMyMessages(loginUser);
+            PageInfo<Comment> pageInfo = new PageInfo<>(myMessages, 2);
+
+            List<Comment> thisPageMessages = pageInfo.getList();
+            mv.addObject("pageInfo", pageInfo);
+            mv.addObject("thisPageMessages", thisPageMessages);
+            mv.setViewName("messages");
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
+
+    };
 
     @ModelAttribute("name")
     public String getName() {

@@ -155,5 +155,27 @@ public class BlogController {
         return mv;
     };
 
+    @RequestMapping("my_blogs")
+    public ModelAndView showMyBlogs(
+            @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
+            @ModelAttribute("loginUser") User loginUser){
+        ModelAndView mv = new ModelAndView();
+
+        if (loginUser != null) {
+            PageHelper.startPage(pageNo, 10);
+            List<Blog> myBlogs = blogService.getMyBlogs(loginUser);
+
+            PageInfo<Blog> pageInfo = new PageInfo<>(myBlogs, 5);
+
+            List<Blog> thisPageBlogs = pageInfo.getList();
+            mv.addObject("pageInfo", pageInfo);
+            mv.addObject("thisPageBlogs", thisPageBlogs);
+            mv.setViewName("my_blogs");
+        }
+        else mv.setViewName("redirect:/login");
+        return mv;
+
+    };
+
 
 }

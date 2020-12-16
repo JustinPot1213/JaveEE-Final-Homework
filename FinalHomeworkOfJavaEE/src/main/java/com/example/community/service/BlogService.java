@@ -49,4 +49,8 @@ public class BlogService {
         return commentMapper.getByBlogId(blogId);
     };
 
+    public List<Blog> getMyBlogs(User user){
+        return blogMapper.getByUserId(user.id);
+    };
+
 }

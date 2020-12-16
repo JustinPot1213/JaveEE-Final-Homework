@@ -12,6 +12,7 @@ public interface CommentMapper {
     List<Comment> getByUserName(String userName);
     List<Comment> getByUserId(int userId);
     List<Comment> getByBlogId(int blogId);
+    List<Comment> getMessagesByUserId(int userId);
     Comment getById(int id);
 
     int insertComment(Comment comment);//返回插入记录条数

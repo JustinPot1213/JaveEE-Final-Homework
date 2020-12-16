@@ -9,6 +9,8 @@ import com.example.community.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentService {
 
@@ -39,6 +41,14 @@ public class CommentService {
         Comment toComment = commentMapper.getById(toCommentId);
         Comment newComment = new Comment(text, user, toComment, blog);
         insert(newComment);
+    };
+
+    public List<Comment> getMyComments(User user){
+        return commentMapper.getByUserId(user.id);
+    };
+
+    public List<Comment> getMyMessages(User user){
+      return commentMapper.getMessagesByUserId(user.id);
     };
 
 }
