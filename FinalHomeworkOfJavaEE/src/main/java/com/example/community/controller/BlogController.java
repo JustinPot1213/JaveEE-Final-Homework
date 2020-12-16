@@ -4,6 +4,7 @@ import com.example.community.domain.Blog;
 import com.example.community.domain.Comment;
 import com.example.community.domain.User;
 import com.example.community.service.BlogService;
+import com.example.community.service.RecordService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,6 +26,8 @@ public class BlogController {
 
     @Autowired
     BlogService blogService;
+    @Autowired
+    RecordService recordService;
 
     @RequestMapping("")
     public String redirect(){
@@ -139,6 +142,9 @@ public class BlogController {
             thisBlog = blogService.getById(Integer.parseInt(detailId));
             detail = detailId;
             model.addAttribute("detail",detailId);
+            if (loginUser != null){
+                recordService.record(loginUser,Integer.parseInt(detailId));
+            }
         }
         else {
             thisBlog = blogService.getById(Integer.parseInt(detail));

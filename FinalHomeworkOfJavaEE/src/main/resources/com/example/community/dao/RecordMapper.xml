@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.community.dao.RecordMapper">
+
+    <resultMap id="RecordResultMap" type="com.example.community.domain.Record">
+        <result column="Date" jdbcType="TIMESTAMP" javaType="Date" property="date"/>
+        <association property="user" javaType="com.example.community.domain.User"
+                     select="com.example.community.dao.UserMapper.getById" column="UserId"/>
+        <association property="blog" javaType="com.example.community.domain.Blog"
+                     select="com.example.community.dao.BlogMapper.getById" column="BlogId"/>
+    </resultMap>
+
+    <select id="getByUserId" resultMap="RecordResultMap">
+        select * from records where UserId = #{userId}
+    </select>
+
+    <insert id="addRecord" parameterType="com.example.community.domain.Record" useGeneratedKeys="true" keyColumn="UserId">
+        insert into records(UserId, BlogId, Date) values(#{user.id}, #{blog.id}, #{date})
+    </insert>
+
+</mapper>
