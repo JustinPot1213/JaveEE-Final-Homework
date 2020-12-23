@@ -30,7 +30,7 @@ public class RecordController {
             mv.setViewName("records");
             PageHelper.startPage(pageNo, 7);
             List<Record> myRecords = recordService.getMyRecords(loginUser);
-            PageInfo<Record> pageInfo = new PageInfo<>(myRecords,3);
+            PageInfo<Record> pageInfo = new PageInfo<>(myRecords,2);
 
             List<Record> thisPageRecords = pageInfo.getList();
             mv.addObject("pageInfo",pageInfo);
