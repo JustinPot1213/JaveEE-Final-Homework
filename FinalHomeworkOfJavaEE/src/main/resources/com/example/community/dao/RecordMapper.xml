@@ -11,7 +11,7 @@
     </resultMap>
 
     <select id="getByUserId" resultMap="RecordResultMap">
-        select * from records where UserId = #{userId}
+        select * from records where UserId = #{userId} order by Date desc
     </select>
 
     <insert id="addRecord" parameterType="com.example.community.domain.Record" useGeneratedKeys="true" keyColumn="UserId">

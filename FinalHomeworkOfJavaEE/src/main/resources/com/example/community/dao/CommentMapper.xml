@@ -22,21 +22,21 @@
     <select id="getByUserName" resultMap="CommentResultMap">
         select * from comments where UserId in(
             select users.UserId from users where Name = #{name}
-            )
+            ) order by Date desc
     </select>
 
     <select id="getByUserId" resultMap="CommentResultMap">
-        select * from comments where UserId = #{userId}
+        select * from comments where UserId = #{userId} order by Date desc
     </select>
 
     <select id="getMessagesByUserId" resultMap="CommentResultMap">
         select * from comments where ToCommentId in (
             select CommentId from comments where UserId = #{userId}
-            )
+            ) order by Date desc
     </select>
 
     <select id="getByBlogId" resultMap="CommentResultMap">
-        select * from comments where BlogId = #{blogId}
+        select * from comments where BlogId = #{blogId} order by Date desc
     </select>
 
     <insert id="insertComment" parameterType="com.example.community.domain.Comment" useGeneratedKeys="true" keyColumn="CommentId">

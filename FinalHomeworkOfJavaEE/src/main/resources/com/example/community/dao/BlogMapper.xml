@@ -17,15 +17,15 @@
     <select id= "getByUserName" resultMap="BlogResultMap">
         select * from blogs where UserId in (
             select users.UserId from users where Name = #{name}
-            )
+            ) order by Date desc
     </select>
 
     <select id="getByUserId" resultMap="BlogResultMap">
-        select * from blogs where UserId = #{userId}
+        select * from blogs where UserId = #{userId} order by Date desc
     </select>
 
     <select id="getById" resultMap="BlogResultMap">
-        select * from blogs where BlogId = #{id}
+        select * from blogs where BlogId = #{id} order by Date desc
     </select>
 
     <select id="getFavorites" resultMap="BlogResultMap">
@@ -33,7 +33,7 @@
     </select>
 
     <select id="getAll" resultMap="BlogResultMap">
-        select * from blogs
+        select * from blogs order by Date desc
     </select>
 
     <select id="query" resultMap="BlogResultMap">
